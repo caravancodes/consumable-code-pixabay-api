@@ -1,0 +1,2 @@
+rootProject.name='PixabayAPI'
+include ':app'
