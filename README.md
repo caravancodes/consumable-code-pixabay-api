@@ -1,6 +1,6 @@
 # consumable-code-pixabay-api By AmirIsBack
 - v1.0.0 - Development
-- Release Soon
+- Stable Version
 
 # About This Project
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
@@ -18,6 +18,14 @@ Simple code and reusable data
 https://pixabay.com/api/docs/
 
 # Function Main From This Project
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context)
+
+    // Search for Image
+    fun searchImage(query: String, callback: PixabayResultCallback<ResponseImage>)
+
+    // Search for Video
+    fun searchVideo(query: String, callback: PixabayResultCallback<ResponseVideo>)
 
 # Android Library Version (build.gradle)
 - ext.kotlin_version = '1.3.70'
@@ -29,14 +37,49 @@ https://pixabay.com/api/docs/
 # Version Release
 This Is Latest Release
 
-    $version_release = Still on development
+    $version_release = 1.0.0
 
 What's New??
 
-    * Development *
+    * New Release searchImage() and searchVideo() *
 
 # How To Use This Project
-- Release soon
+<h3>Step 1. Add the JitPack repository to your build file</h3>
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+  
+  
+<h3>Step 2. Add the dependency</h3>
+
+	dependencies {
+	        // library consumable code pixabay api
+            implementation 'com.github.amirisback:consumable-code-pixabay-api:$version_release'
+	}
+	
+<h3>Step 3. Declaration ConsumeTheSportDbApi</h3>
+
+    val query = "One Piece"
+    val consumePixabayApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY)
+    consumePixabayApi.usingChuckInterceptor(this)
+    consumePixabayApi.searchImage(query, object : PixabayResultCallback<ResponseImage>{
+        override fun getResultData(data: ResponseImage) {
+            
+            // * PLACE YOUR CODE HERE FOR UI / ARRAYLIST
+            
+        }
+
+        override fun failedResult(statusCode: Int, errorMessage: String?) {
+        }
+    })
+	
+	
 
 # Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
