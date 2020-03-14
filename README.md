@@ -63,7 +63,7 @@ Add it in your root build.gradle at the end of repositories:
             implementation 'com.github.amirisback:consumable-code-pixabay-api:$version_release'
 	}
 	
-<h3>Step 3. Declaration ConsumeTheSportDbApi</h3>
+<h3>Step 3. Declaration ConsumePixabayApi</h3>
 
     val query = "One Piece"
     val consumePixabayApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY)
