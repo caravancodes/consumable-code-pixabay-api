@@ -1,5 +1,7 @@
 package com.frogobox.frogopixabayapi.data.source
 
+import android.content.Context
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -17,3 +19,12 @@ package com.frogobox.frogopixabayapi.data.source
  * com.frogobox.frogopixabayapi.data.source
  *
  */
+
+class PixabayRepository (private val remoteDataSource: PixabayRemoteDataSource) : PixabayDataSource {
+
+    override fun usingChuckInterceptor(context: Context) {
+        remoteDataSource.usingChuckInterceptor(context)
+    }
+
+
+}

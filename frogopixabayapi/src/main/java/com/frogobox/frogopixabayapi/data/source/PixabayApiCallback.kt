@@ -17,3 +17,6 @@ package com.frogobox.frogopixabayapi.data.source
  * com.frogobox.frogopixabayapi.data.source
  *
  */
+interface PixabayApiCallback {
+
+}

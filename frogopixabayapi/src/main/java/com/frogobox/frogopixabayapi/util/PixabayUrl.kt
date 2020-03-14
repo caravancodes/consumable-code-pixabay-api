@@ -17,3 +17,12 @@ package com.frogobox.frogopixabayapi.util
  * com.frogobox.frogopixabayapi.util
  *
  */
+class PixabayUrl {
+
+    companion object {
+
+        const val BASE_URL = "www"
+
+    }
+
+}

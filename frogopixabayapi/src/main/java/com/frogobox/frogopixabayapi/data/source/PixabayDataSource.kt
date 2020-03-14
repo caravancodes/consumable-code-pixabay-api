@@ -1,5 +1,7 @@
 package com.frogobox.frogopixabayapi.data.source
 
+import android.content.Context
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -17,3 +19,10 @@ package com.frogobox.frogopixabayapi.data.source
  * com.frogobox.frogopixabayapi.data.source
  *
  */
+
+interface PixabayDataSource {
+
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context)
+
+}

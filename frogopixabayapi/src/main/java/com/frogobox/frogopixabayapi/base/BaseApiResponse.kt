@@ -17,3 +17,6 @@ package com.frogobox.frogopixabayapi.base
  * com.frogobox.frogopixabayapi.base
  *
  */
+class BaseApiResponse {
+
+}

@@ -17,3 +17,12 @@ package com.frogobox.frogopixabayapi.callback
  * com.frogobox.frogopixabayapi.callback
  *
  */
+interface PixabayResultCallback<T> {
+
+    // Getting Data From API
+    fun getResultData(data: T)
+
+    // Failed Meesage
+    fun failedResult(statusCode: Int, errorMessage: String?)
+
+}

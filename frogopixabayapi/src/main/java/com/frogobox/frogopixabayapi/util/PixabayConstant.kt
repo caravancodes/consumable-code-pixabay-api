@@ -17,3 +17,10 @@ package com.frogobox.frogopixabayapi.util
  * com.frogobox.frogopixabayapi.util
  *
  */
+class PixabayConstant {
+
+    companion object {
+
+    }
+
+}
