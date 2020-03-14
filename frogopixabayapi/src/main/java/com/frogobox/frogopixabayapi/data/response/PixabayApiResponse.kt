@@ -1,4 +1,4 @@
-package com.frogobox.frogopixabayapi.base
+package com.frogobox.frogopixabayapi.data.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogopixabayapi.base
  *
  */
-data class BaseApiResponse<T>(
+data class PixabayApiResponse<T>(
     @SerializedName("total")
     var total: Int? = null,
 
