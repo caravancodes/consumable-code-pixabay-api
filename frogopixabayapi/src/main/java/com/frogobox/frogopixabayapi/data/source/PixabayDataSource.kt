@@ -1,6 +1,11 @@
 package com.frogobox.frogopixabayapi.data.source
 
 import android.content.Context
+import com.frogobox.frogopixabayapi.base.BasePixabayDataSource
+import com.frogobox.frogopixabayapi.data.model.Image
+import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.response.ResponseImage
+import com.frogobox.frogopixabayapi.data.response.ResponseVideo
 
 /**
  * Created by Faisal Amir
@@ -24,5 +29,14 @@ interface PixabayDataSource {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
+
+    // Search for Image
+    fun searchImage(apiKey: String, query: String, callback: GetRemoteCallback<ResponseImage>)
+
+    // Search for Video
+    fun searchVideo(apiKey: String, query: String, callback: GetRemoteCallback<ResponseVideo>)
+
+    // Response Callback
+    interface GetRemoteCallback<T> : BasePixabayDataSource.ResponseCallback<T>
 
 }

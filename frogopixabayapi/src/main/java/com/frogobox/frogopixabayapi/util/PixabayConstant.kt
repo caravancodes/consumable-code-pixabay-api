@@ -27,7 +27,7 @@ class PixabayConstant {
 
         // A URL encoded search term. If omitted, all images are returned. This value may not exceed 100 characters.
         // Example: "yellow+flower"
-        const val QUERY_SEARCH = "q"
+        const val QUERY_Q = "q"
 
         // Language code of the language to be searched in.
         // Accepted values: cs, da, de, en, es, fr, id, it, hu, nl, no, pl, pt, ro, sk, fi, sv, tr, vi, th, bg, ru, el, ja, ko, zh
@@ -98,5 +98,5 @@ class PixabayConstant {
         // Default: "false"
         const val QUERY_PRETTY = "pretty"
     }
-    
+
 }

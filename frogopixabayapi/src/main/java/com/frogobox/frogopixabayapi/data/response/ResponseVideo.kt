@@ -1,5 +1,7 @@
 package com.frogobox.frogopixabayapi.data.response
 
+import com.frogobox.frogopixabayapi.data.model.Image
+import com.frogobox.frogopixabayapi.data.model.Video
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -16,10 +18,10 @@ import com.google.gson.annotations.SerializedName
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogopixabayapi.base
+ * com.frogobox.frogopixabayapi.data.response
  *
  */
-data class PixabayApiResponse<T>(
+data class ResponseVideo(
     @SerializedName("total")
     var total: Int? = null,
 
@@ -27,5 +29,5 @@ data class PixabayApiResponse<T>(
     var totalHits: Int? = null,
 
     @SerializedName("hits")
-    var hits: T? = null
+    var hits: List<Video>? = null
 )

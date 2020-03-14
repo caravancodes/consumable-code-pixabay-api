@@ -1,6 +1,10 @@
 package com.frogobox.frogopixabayapi.data.source
 
 import android.content.Context
+import com.frogobox.frogopixabayapi.data.model.Image
+import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.response.ResponseImage
+import com.frogobox.frogopixabayapi.data.response.ResponseVideo
 
 /**
  * Created by Faisal Amir
@@ -26,5 +30,19 @@ class PixabayRepository (private val remoteDataSource: PixabayRemoteDataSource) 
         remoteDataSource.usingChuckInterceptor(context)
     }
 
+    override fun searchImage(
+        apiKey: String,
+        query: String,
+        callback: PixabayDataSource.GetRemoteCallback<ResponseImage>
+    ) {
+        remoteDataSource.searchImage(apiKey, query, callback)
+    }
 
+    override fun searchVideo(
+        apiKey: String,
+        query: String,
+        callback: PixabayDataSource.GetRemoteCallback<ResponseVideo>
+    ) {
+        remoteDataSource.searchVideo(apiKey, query, callback)
+    }
 }

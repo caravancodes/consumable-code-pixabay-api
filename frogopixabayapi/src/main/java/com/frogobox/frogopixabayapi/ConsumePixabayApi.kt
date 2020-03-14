@@ -1,6 +1,12 @@
 package com.frogobox.frogopixabayapi
 
 import android.content.Context
+import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
+import com.frogobox.frogopixabayapi.data.model.Image
+import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.response.ResponseImage
+import com.frogobox.frogopixabayapi.data.response.ResponseVideo
+import com.frogobox.frogopixabayapi.data.source.PixabayDataSource
 import com.frogobox.frogopixabayapi.data.source.PixabayRemoteDataSource
 import com.frogobox.frogopixabayapi.data.source.PixabayRepository
 
@@ -21,7 +27,7 @@ import com.frogobox.frogopixabayapi.data.source.PixabayRepository
  * com.frogobox.frogopixabayapi
  *
  */
-class ConsumePixabayApi (private val apiKey: String) : ConsumePixabayApiView {
+class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
 
     private val pixabayRepository = PixabayRepository(PixabayRemoteDataSource)
 
@@ -29,4 +35,33 @@ class ConsumePixabayApi (private val apiKey: String) : ConsumePixabayApiView {
         pixabayRepository.usingChuckInterceptor(context)
     }
 
+    override fun searchImage(query: String, callback: PixabayResultCallback<ResponseImage>) {
+        pixabayRepository.searchImage(
+            apiKey,
+            query,
+            object : PixabayDataSource.GetRemoteCallback<ResponseImage> {
+                override fun onSuccess(data: ResponseImage) {
+                    callback.getResultData(data)
+                }
+
+                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                    callback.failedResult(statusCode, errorMessage)
+                }
+            })
+    }
+
+    override fun searchVideo(query: String, callback: PixabayResultCallback<ResponseVideo>) {
+        pixabayRepository.searchVideo(
+            apiKey,
+            query,
+            object : PixabayDataSource.GetRemoteCallback<ResponseVideo> {
+                override fun onSuccess(data: ResponseVideo) {
+                    callback.getResultData(data)
+                }
+
+                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                    callback.failedResult(statusCode, errorMessage)
+                }
+            })
+    }
 }

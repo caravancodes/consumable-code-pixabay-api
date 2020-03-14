@@ -1,6 +1,10 @@
 package com.frogobox.frogopixabayapi.data.source
 
 import android.content.Context
+import com.frogobox.frogopixabayapi.data.response.ResponseImage
+import com.frogobox.frogopixabayapi.data.response.ResponseVideo
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by Faisal Amir
@@ -27,4 +31,49 @@ object PixabayRemoteDataSource : PixabayDataSource {
         pixabayApiService.usingChuckInterceptor(context)
     }
 
+    override fun searchImage(
+        apiKey: String,
+        query: String,
+        callback: PixabayDataSource.GetRemoteCallback<ResponseImage>
+    ) {
+        pixabayApiService.getApiService
+            .searchImage(apiKey, query)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : PixabayApiCallback<ResponseImage>() {
+                override fun onSuccess(model: ResponseImage) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
+    }
+
+    override fun searchVideo(
+        apiKey: String,
+        query: String,
+        callback: PixabayDataSource.GetRemoteCallback<ResponseVideo>
+    ) {
+        pixabayApiService.getApiService
+            .searchVideo(apiKey, query)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : PixabayApiCallback<ResponseVideo>() {
+                override fun onSuccess(model: ResponseVideo) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
+    }
 }
+
+
