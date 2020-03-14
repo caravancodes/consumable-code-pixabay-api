@@ -21,6 +21,12 @@ class PixabayConstant {
 
     companion object {
 
+        const val SAMPLE_API_KEY = "14783772-79ef44657a1c0939186d84986"
+        
+        const val QUERY_API_KEY = "key"
+        const val QUERY_SEARCH = "q"
+        const val QUERY_TYPE = "image_type"
+
     }
 
 }

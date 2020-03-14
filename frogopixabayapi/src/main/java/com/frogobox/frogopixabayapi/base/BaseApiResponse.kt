@@ -1,5 +1,7 @@
 package com.frogobox.frogopixabayapi.base
 
+import com.google.gson.annotations.SerializedName
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -17,6 +19,13 @@ package com.frogobox.frogopixabayapi.base
  * com.frogobox.frogopixabayapi.base
  *
  */
-class BaseApiResponse {
+data class BaseApiResponse<T>(
+    @SerializedName("total")
+    var total: Int? = null,
 
-}
+    @SerializedName("totalHits")
+    var totalHits: Int? = null,
+
+    @SerializedName("hits")
+    var hits: T? = null
+)

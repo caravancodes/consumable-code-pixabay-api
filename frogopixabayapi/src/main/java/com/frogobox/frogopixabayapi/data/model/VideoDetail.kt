@@ -1,4 +1,6 @@
-package com.frogobox.frogopixabayapi.util
+package com.frogobox.frogopixabayapi.data.model
+
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by Faisal Amir
@@ -14,19 +16,21 @@ package com.frogobox.frogopixabayapi.util
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogopixabayapi.util
+ * com.frogobox.frogopixabayapi.data.model
  *
  */
-class PixabayUrl {
+data class VideoDetail(
 
-    companion object {
+    @SerializedName("url")
+    var url: String? = null,
 
-        const val BASE_URL = "https://pixabay.com/"
-        const val PATH_IMAGE = "api/"
-        const val PATH_VIDEO = "api/videos/"
+    @SerializedName("width")
+    var width: Int? = null,
 
+    @SerializedName("height")
+    var height: Int? = null,
 
+    @SerializedName("size")
+    var size: Int? = null
 
-    }
-
-}
+)
