@@ -4,8 +4,7 @@ import android.content.Context
 import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
 import com.frogobox.frogopixabayapi.data.model.Image
 import com.frogobox.frogopixabayapi.data.model.Video
-import com.frogobox.frogopixabayapi.data.response.ResponseImage
-import com.frogobox.frogopixabayapi.data.response.ResponseVideo
+import com.frogobox.frogopixabayapi.data.response.Response
 
 /**
  * Created by Faisal Amir
@@ -31,9 +30,9 @@ interface ConsumePixabayApiView {
     fun usingChuckInterceptor(context: Context)
 
     // Search for Image
-    fun searchImage(query: String, callback: PixabayResultCallback<ResponseImage>)
+    fun searchImage(query: String, callback: PixabayResultCallback<Response<Image>>)
 
     // Search for Video
-    fun searchVideo(query: String, callback: PixabayResultCallback<ResponseVideo>)
+    fun searchVideo(query: String, callback: PixabayResultCallback<Response<Video>>)
 
 }

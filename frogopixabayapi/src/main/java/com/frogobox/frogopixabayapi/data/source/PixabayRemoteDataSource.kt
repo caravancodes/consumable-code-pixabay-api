@@ -1,8 +1,9 @@
 package com.frogobox.frogopixabayapi.data.source
 
 import android.content.Context
-import com.frogobox.frogopixabayapi.data.response.ResponseImage
-import com.frogobox.frogopixabayapi.data.response.ResponseVideo
+import com.frogobox.frogopixabayapi.data.model.Image
+import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.response.Response
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -34,14 +35,14 @@ object PixabayRemoteDataSource : PixabayDataSource {
     override fun searchImage(
         apiKey: String,
         query: String,
-        callback: PixabayDataSource.GetRemoteCallback<ResponseImage>
+        callback: PixabayDataSource.GetRemoteCallback<Response<Image>>
     ) {
         pixabayApiService.getApiService
             .searchImage(apiKey, query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : PixabayApiCallback<ResponseImage>() {
-                override fun onSuccess(model: ResponseImage) {
+            .subscribe(object : PixabayApiCallback<Response<Image>>() {
+                override fun onSuccess(model: Response<Image>) {
                     callback.onSuccess(model)
                 }
 
@@ -56,14 +57,14 @@ object PixabayRemoteDataSource : PixabayDataSource {
     override fun searchVideo(
         apiKey: String,
         query: String,
-        callback: PixabayDataSource.GetRemoteCallback<ResponseVideo>
+        callback: PixabayDataSource.GetRemoteCallback<Response<Video>>
     ) {
         pixabayApiService.getApiService
             .searchVideo(apiKey, query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : PixabayApiCallback<ResponseVideo>() {
-                override fun onSuccess(model: ResponseVideo) {
+            .subscribe(object : PixabayApiCallback<Response<Video>>() {
+                override fun onSuccess(model: Response<Video>) {
                     callback.onSuccess(model)
                 }
 

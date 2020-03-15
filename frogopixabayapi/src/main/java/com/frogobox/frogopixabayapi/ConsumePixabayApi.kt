@@ -4,8 +4,7 @@ import android.content.Context
 import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
 import com.frogobox.frogopixabayapi.data.model.Image
 import com.frogobox.frogopixabayapi.data.model.Video
-import com.frogobox.frogopixabayapi.data.response.ResponseImage
-import com.frogobox.frogopixabayapi.data.response.ResponseVideo
+import com.frogobox.frogopixabayapi.data.response.Response
 import com.frogobox.frogopixabayapi.data.source.PixabayDataSource
 import com.frogobox.frogopixabayapi.data.source.PixabayRemoteDataSource
 import com.frogobox.frogopixabayapi.data.source.PixabayRepository
@@ -35,12 +34,12 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
         pixabayRepository.usingChuckInterceptor(context)
     }
 
-    override fun searchImage(query: String, callback: PixabayResultCallback<ResponseImage>) {
+    override fun searchImage(query: String, callback: PixabayResultCallback<Response<Image>>) {
         pixabayRepository.searchImage(
             apiKey,
             query,
-            object : PixabayDataSource.GetRemoteCallback<ResponseImage> {
-                override fun onSuccess(data: ResponseImage) {
+            object : PixabayDataSource.GetRemoteCallback<Response<Image>> {
+                override fun onSuccess(data: Response<Image>) {
                     callback.getResultData(data)
                 }
 
@@ -50,12 +49,12 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
             })
     }
 
-    override fun searchVideo(query: String, callback: PixabayResultCallback<ResponseVideo>) {
+    override fun searchVideo(query: String, callback: PixabayResultCallback<Response<Video>>) {
         pixabayRepository.searchVideo(
             apiKey,
             query,
-            object : PixabayDataSource.GetRemoteCallback<ResponseVideo> {
-                override fun onSuccess(data: ResponseVideo) {
+            object : PixabayDataSource.GetRemoteCallback<Response<Video>> {
+                override fun onSuccess(data: Response<Video>) {
                     callback.getResultData(data)
                 }
 

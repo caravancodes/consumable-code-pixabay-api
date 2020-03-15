@@ -3,8 +3,7 @@ package com.frogobox.frogopixabayapi.data.source
 import android.content.Context
 import com.frogobox.frogopixabayapi.data.model.Image
 import com.frogobox.frogopixabayapi.data.model.Video
-import com.frogobox.frogopixabayapi.data.response.ResponseImage
-import com.frogobox.frogopixabayapi.data.response.ResponseVideo
+import com.frogobox.frogopixabayapi.data.response.Response
 
 /**
  * Created by Faisal Amir
@@ -33,7 +32,7 @@ class PixabayRepository (private val remoteDataSource: PixabayRemoteDataSource) 
     override fun searchImage(
         apiKey: String,
         query: String,
-        callback: PixabayDataSource.GetRemoteCallback<ResponseImage>
+        callback: PixabayDataSource.GetRemoteCallback<Response<Image>>
     ) {
         remoteDataSource.searchImage(apiKey, query, callback)
     }
@@ -41,7 +40,7 @@ class PixabayRepository (private val remoteDataSource: PixabayRemoteDataSource) 
     override fun searchVideo(
         apiKey: String,
         query: String,
-        callback: PixabayDataSource.GetRemoteCallback<ResponseVideo>
+        callback: PixabayDataSource.GetRemoteCallback<Response<Video>>
     ) {
         remoteDataSource.searchVideo(apiKey, query, callback)
     }

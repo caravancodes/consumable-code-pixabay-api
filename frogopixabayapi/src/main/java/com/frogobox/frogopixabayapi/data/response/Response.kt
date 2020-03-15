@@ -1,7 +1,5 @@
 package com.frogobox.frogopixabayapi.data.response
 
-import com.frogobox.frogopixabayapi.data.model.Image
-import com.frogobox.frogopixabayapi.data.model.Video
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -9,7 +7,7 @@ import com.google.gson.annotations.SerializedName
  * FrogoBox Inc License
  * =========================================
  * PixabayAPI
- * Copyright (C) 14/03/2020.
+ * Copyright (C) 15/03/2020.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -21,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogopixabayapi.data.response
  *
  */
-data class ResponseVideo(
+data class Response<T>(
     @SerializedName("total")
     var total: Int? = null,
 
@@ -29,5 +27,5 @@ data class ResponseVideo(
     var totalHits: Int? = null,
 
     @SerializedName("hits")
-    var hits: List<Video>? = null
+    var hits: List<T>? = null
 )

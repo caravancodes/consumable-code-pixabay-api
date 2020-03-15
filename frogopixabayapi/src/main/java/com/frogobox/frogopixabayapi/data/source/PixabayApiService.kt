@@ -1,9 +1,9 @@
 package com.frogobox.frogopixabayapi.data.source
 
 import android.content.Context
+import com.frogobox.frogopixabayapi.data.model.Image
 import com.frogobox.frogopixabayapi.data.model.Video
-import com.frogobox.frogopixabayapi.data.response.ResponseImage
-import com.frogobox.frogopixabayapi.data.response.ResponseVideo
+import com.frogobox.frogopixabayapi.data.response.Response
 import com.frogobox.frogopixabayapi.util.PixabayConstant
 import com.frogobox.frogopixabayapi.util.PixabayUrl
 import com.readystatesoftware.chuck.ChuckInterceptor
@@ -14,7 +14,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
@@ -42,14 +41,14 @@ interface PixabayApiService {
     fun searchImage(
         @Query(PixabayConstant.QUERY_API_KEY) apiKey: String,
         @Query(PixabayConstant.QUERY_Q) q: String
-    ): Observable<ResponseImage>
+    ): Observable<Response<Image>>
 
     // Search for Video
     @GET(PixabayUrl.PATH_VIDEO)
     fun searchVideo(
         @Query(PixabayConstant.QUERY_API_KEY) apiKey: String,
         @Query(PixabayConstant.QUERY_Q) q: String
-    ): Observable<ResponseVideo>
+    ): Observable<Response<Video>>
 
     companion object Factory {
 
