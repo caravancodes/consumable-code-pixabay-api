@@ -34,11 +34,40 @@ object PixabayRemoteDataSource : PixabayDataSource {
 
     override fun searchImage(
         apiKey: String,
-        query: String,
+        q: String,
+        lang: String?,
+        id: String?,
+        imageType: String?,
+        orientation: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        colors: String?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
         callback: PixabayDataSource.GetRemoteCallback<Response<Image>>
     ) {
         pixabayApiService.getApiService
-            .searchImage(apiKey, query)
+            .searchImage(
+                apiKey,
+                q,
+                lang,
+                id,
+                imageType,
+                orientation,
+                category,
+                minWidth,
+                minHeight,
+                colors,
+                editorsChoice,
+                safeSearch,
+                order,
+                page,
+                perPage
+            )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
@@ -58,11 +87,36 @@ object PixabayRemoteDataSource : PixabayDataSource {
 
     override fun searchVideo(
         apiKey: String,
-        query: String,
+        q: String,
+        lang: String?,
+        id: String?,
+        videoType: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
         callback: PixabayDataSource.GetRemoteCallback<Response<Video>>
     ) {
         pixabayApiService.getApiService
-            .searchVideo(apiKey, query)
+            .searchVideo(
+                apiKey,
+                q,
+                lang,
+                id,
+                videoType,
+                category,
+                minWidth,
+                minHeight,
+                editorsChoice,
+                safeSearch,
+                order,
+                page,
+                perPage
+            )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }

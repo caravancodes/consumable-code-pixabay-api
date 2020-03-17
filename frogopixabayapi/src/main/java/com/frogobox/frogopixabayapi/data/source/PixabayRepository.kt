@@ -23,7 +23,7 @@ import com.frogobox.frogopixabayapi.data.response.Response
  *
  */
 
-class PixabayRepository (private val remoteDataSource: PixabayRemoteDataSource) : PixabayDataSource {
+class PixabayRepository(private val remoteDataSource: PixabayRemoteDataSource) : PixabayDataSource {
 
     override fun usingChuckInterceptor(context: Context) {
         remoteDataSource.usingChuckInterceptor(context)
@@ -31,17 +31,73 @@ class PixabayRepository (private val remoteDataSource: PixabayRemoteDataSource) 
 
     override fun searchImage(
         apiKey: String,
-        query: String,
+        q: String,
+        lang: String?,
+        id: String?,
+        imageType: String?,
+        orientation: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        colors: String?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
         callback: PixabayDataSource.GetRemoteCallback<Response<Image>>
     ) {
-        remoteDataSource.searchImage(apiKey, query, callback)
+        remoteDataSource.searchImage(
+            apiKey,
+            q,
+            lang,
+            id,
+            imageType,
+            orientation,
+            category,
+            minWidth,
+            minHeight,
+            colors,
+            editorsChoice,
+            safeSearch,
+            order,
+            page,
+            perPage,
+            callback
+        )
     }
 
     override fun searchVideo(
         apiKey: String,
-        query: String,
+        q: String,
+        lang: String?,
+        id: String?,
+        videoType: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
         callback: PixabayDataSource.GetRemoteCallback<Response<Video>>
     ) {
-        remoteDataSource.searchVideo(apiKey, query, callback)
+        remoteDataSource.searchVideo(
+            apiKey,
+            q,
+            lang,
+            id,
+            videoType,
+            category,
+            minWidth,
+            minHeight,
+            editorsChoice,
+            safeSearch,
+            order,
+            page,
+            perPage,
+            callback
+        )
     }
 }

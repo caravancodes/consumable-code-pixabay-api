@@ -34,10 +34,39 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
         pixabayRepository.usingChuckInterceptor(context)
     }
 
-    override fun searchImage(query: String, callback: PixabayResultCallback<Response<Image>>) {
+    override fun searchImage(
+        q: String,
+        lang: String?,
+        id: String?,
+        imageType: String?,
+        orientation: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        colors: String?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<Image>>
+    ) {
         pixabayRepository.searchImage(
             apiKey,
-            query,
+            q,
+            lang,
+            id,
+            imageType,
+            orientation,
+            category,
+            minWidth,
+            minHeight,
+            colors,
+            editorsChoice,
+            safeSearch,
+            order,
+            page,
+            perPage,
             object : PixabayDataSource.GetRemoteCallback<Response<Image>> {
                 override fun onSuccess(data: Response<Image>) {
                     callback.getResultData(data)
@@ -57,10 +86,35 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
             })
     }
 
-    override fun searchVideo(query: String, callback: PixabayResultCallback<Response<Video>>) {
+    override fun searchVideo(
+        q: String,
+        lang: String?,
+        id: String?,
+        videoType: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<Video>>
+    ) {
         pixabayRepository.searchVideo(
             apiKey,
-            query,
+            q,
+            lang,
+            id,
+            videoType,
+            category,
+            minWidth,
+            minHeight,
+            editorsChoice,
+            safeSearch,
+            order,
+            page,
+            perPage,
             object : PixabayDataSource.GetRemoteCallback<Response<Video>> {
                 override fun onSuccess(data: Response<Video>) {
                     callback.getResultData(data)

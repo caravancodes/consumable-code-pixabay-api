@@ -30,9 +30,39 @@ interface ConsumePixabayApiView {
     fun usingChuckInterceptor(context: Context)
 
     // Search for Image
-    fun searchImage(query: String, callback: PixabayResultCallback<Response<Image>>)
+    fun searchImage(
+        q: String,
+        lang: String?,
+        id: String?,
+        imageType: String?,
+        orientation: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        colors: String?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<Image>>
+    )
 
     // Search for Video
-    fun searchVideo(query: String, callback: PixabayResultCallback<Response<Video>>)
+    fun searchVideo(
+        q: String,
+        lang: String?,
+        id: String?,
+        videoType: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<Video>>
+    )
 
 }
