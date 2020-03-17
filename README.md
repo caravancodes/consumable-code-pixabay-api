@@ -1,5 +1,5 @@
 # consumable-code-pixabay-api By AmirIsBack
-- v1.0.0 - Development
+- v1.0.1 - Development
 - Stable Version
 
 # About This Project
@@ -22,10 +22,40 @@ https://pixabay.com/api/docs/
     fun usingChuckInterceptor(context: Context)
 
     // Search for Image
-    fun searchImage(query: String, callback: PixabayResultCallback<ResponseImage>)
+    fun searchImage(
+        q: String,
+        lang: String?,
+        id: String?,
+        imageType: String?,
+        orientation: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        colors: String?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<Image>>
+    )
 
     // Search for Video
-    fun searchVideo(query: String, callback: PixabayResultCallback<ResponseVideo>)
+    fun searchVideo(
+        q: String,
+        lang: String?,
+        id: String?,
+        videoType: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<Video>>
+    )
 
 # Android Library Version (build.gradle)
 - ext.kotlin_version = '1.3.70'
@@ -37,11 +67,11 @@ https://pixabay.com/api/docs/
 # Version Release
 This Is Latest Release
 
-    $version_release = 1.0.0
+    $version_release = 1.0.1
 
 What's New??
 
-    * New Release searchImage() and searchVideo() *
+    * add handing progress view and fully parameter *
 
 # How To Use This Project
 <h3>Step 1. Add the JitPack repository to your build file</h3>
@@ -65,20 +95,43 @@ Add it in your root build.gradle at the end of repositories:
 	
 <h3>Step 3. Declaration ConsumePixabayApi</h3>
 
-    val query = "One Piece"
-    val consumePixabayApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY)
-    consumePixabayApi.usingChuckInterceptor(this)
-    consumePixabayApi.searchImage(query, object : PixabayResultCallback<ResponseImage>{
-        override fun getResultData(data: ResponseImage) {
-            
-            // * PLACE YOUR CODE HERE FOR UI / ARRAYLIST
-            
-        }
+    val consumePixabayApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY) // Your API Key
+    consumePixabayApi.usingChuckInterceptor(this) // Using Chuck Interceptor
 
-        override fun failedResult(statusCode: Int, errorMessage: String?) {
-        }
-    })
-	
+    val query = "Nature"
+
+    consumePixabayApi.searchImage(
+        query,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        object : PixabayResultCallback<Response<Image>> {
+            override fun getResultData(data: Response<Image>) {
+                // Place your UI / Data
+            }
+
+            override fun failedResult(statusCode: Int, errorMessage: String?) {
+                // failed to do
+            }
+
+            override fun onShowProgress() {
+                // showing your progress view
+            }
+
+            override fun onHideProgress() {
+                // hide your progress view
+            }
+        })
 	
 
 # Colaborator
