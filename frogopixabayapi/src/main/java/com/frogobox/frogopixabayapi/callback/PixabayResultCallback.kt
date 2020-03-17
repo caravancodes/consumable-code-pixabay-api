@@ -25,4 +25,10 @@ interface PixabayResultCallback<T> {
     // Failed Meesage
     fun failedResult(statusCode: Int, errorMessage: String?)
 
+    // Show your progress view
+    fun onShowProgress()
+
+    // Hide your progress view
+    fun onHideProgress()
+
 }

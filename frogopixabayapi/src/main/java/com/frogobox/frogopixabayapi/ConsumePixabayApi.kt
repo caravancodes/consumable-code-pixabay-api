@@ -46,6 +46,14 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
                     callback.failedResult(statusCode, errorMessage)
                 }
+
+                override fun onShowProgress() {
+                    callback.onShowProgress()
+                }
+
+                override fun onHideProgress() {
+                    callback.onHideProgress()
+                }
             })
     }
 
@@ -60,6 +68,14 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
                     callback.failedResult(statusCode, errorMessage)
+                }
+
+                override fun onShowProgress() {
+                    callback.onShowProgress()
+                }
+
+                override fun onHideProgress() {
+                    callback.onHideProgress()
                 }
             })
     }

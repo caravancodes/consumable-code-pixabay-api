@@ -41,6 +41,8 @@ object PixabayRemoteDataSource : PixabayDataSource {
             .searchImage(apiKey, query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
             .subscribe(object : PixabayApiCallback<Response<Image>>() {
                 override fun onSuccess(model: Response<Image>) {
                     callback.onSuccess(model)
@@ -63,6 +65,8 @@ object PixabayRemoteDataSource : PixabayDataSource {
             .searchVideo(apiKey, query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
             .subscribe(object : PixabayApiCallback<Response<Video>>() {
                 override fun onSuccess(model: Response<Video>) {
                     callback.onSuccess(model)

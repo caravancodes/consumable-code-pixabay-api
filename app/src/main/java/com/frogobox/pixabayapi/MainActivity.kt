@@ -21,12 +21,19 @@ class MainActivity : AppCompatActivity() {
 
         consumePixabayApi.searchImage(query, object : PixabayResultCallback<Response<Image>> {
             override fun getResultData(data: Response<Image>) {
-                for (i in data.hits?.indices!!) {
-                    println(data.hits!![0].largeImageURL)
-                }
+                // Place your UI / Data
             }
 
             override fun failedResult(statusCode: Int, errorMessage: String?) {
+                // failed to do
+            }
+
+            override fun onShowProgress() {
+                // showing your progress view
+            }
+
+            override fun onHideProgress() {
+                // hide your progress view
             }
         })
 

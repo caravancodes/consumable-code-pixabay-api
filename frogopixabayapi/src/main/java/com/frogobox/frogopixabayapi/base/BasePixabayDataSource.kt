@@ -26,6 +26,13 @@ interface BasePixabayDataSource {
 
         // If failed fetching data from API
         fun onFailed(statusCode: Int, errorMessage: String? = "")
+
+        // Show your progress view
+        fun onShowProgress()
+
+        // Hide your progress view
+        fun onHideProgress()
+
     }
 
 }
