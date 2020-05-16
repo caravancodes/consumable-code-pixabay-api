@@ -5,64 +5,8 @@
 # About This Project
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
 
-# Special From This Project
-Simple code and reusable data
-
-# Fecthing Data Library
-- Retrofit
-- RxJava
-- OkHttp
-- Chuck Interceptor
-
 # Documentation Pixabay Api
 https://pixabay.com/api/docs/
-
-# Function Main From This Project
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
-
-    // Search for Image
-    fun searchImage(
-        q: String,
-        lang: String?,
-        id: String?,
-        imageType: String?,
-        orientation: String?,
-        category: String?,
-        minWidth: Int?,
-        minHeight: Int?,
-        colors: String?,
-        editorsChoice: Boolean?,
-        safeSearch: Boolean?,
-        order: String?,
-        page: Int?,
-        perPage: Int?,
-        callback: PixabayResultCallback<Response<Image>>
-    )
-
-    // Search for Video
-    fun searchVideo(
-        q: String,
-        lang: String?,
-        id: String?,
-        videoType: String?,
-        category: String?,
-        minWidth: Int?,
-        minHeight: Int?,
-        editorsChoice: Boolean?,
-        safeSearch: Boolean?,
-        order: String?,
-        page: Int?,
-        perPage: Int?,
-        callback: PixabayResultCallback<Response<Video>>
-    )
-
-# Android Library Version (build.gradle)
-- ext.kotlin_version = '1.3.70'
-- classpath 'com.android.tools.build:gradle:3.6.1'
-- compileSdkVersion 29
-- buildToolsVersion "29.0.3"
-- minSdkVersion 21
 
 # Version Release
 This Is Latest Release
@@ -115,8 +59,8 @@ Add it in your root build.gradle at the end of repositories:
         null,
         null,
         null,
-        object : PixabayResultCallback<Response<Image>> {
-            override fun getResultData(data: Response<Image>) {
+        object : PixabayResultCallback<Response<PixabayImage>> {
+            override fun getResultData(data: Response<PixabayImage>) {
                 // Place your UI / Data
             }
 
@@ -133,6 +77,69 @@ Add it in your root build.gradle at the end of repositories:
             }
         })
 	
+	
+# Automatically Using This Permission
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+# Screen Shoot Apps
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_main.png"></span>
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_1.png"></span>
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_2.png"></span>
+
+# Function Main From This Project
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context)
+
+    // Search for Image
+    fun searchImage(
+        q: String,
+        lang: String?,
+        id: String?,
+        imageType: String?,
+        orientation: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        colors: String?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<PixabayImage>>
+    )
+
+    // Search for Video
+    fun searchVideo(
+        q: String,
+        lang: String?,
+        id: String?,
+        videoType: String?,
+        category: String?,
+        minWidth: Int?,
+        minHeight: Int?,
+        editorsChoice: Boolean?,
+        safeSearch: Boolean?,
+        order: String?,
+        page: Int?,
+        perPage: Int?,
+        callback: PixabayResultCallback<Response<PixabayVideo>>
+    )
+
+# Android Library Version (build.gradle)
+- ext.kotlin_version = '1.3.70'
+- classpath 'com.android.tools.build:gradle:3.6.1'
+- compileSdkVersion 29
+- buildToolsVersion "29.0.3"
+- minSdkVersion 21
+
+# Fecthing Data Library
+- Retrofit
+- RxJava
+- OkHttp
+- Chuck Interceptor
 
 # Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
