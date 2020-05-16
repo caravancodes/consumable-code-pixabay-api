@@ -1,8 +1,8 @@
 package com.frogobox.frogopixabayapi.data.source
 
 import android.content.Context
-import com.frogobox.frogopixabayapi.data.model.Image
-import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.model.PixabayVideo
 import com.frogobox.frogopixabayapi.data.response.Response
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -48,7 +48,7 @@ object PixabayRemoteDataSource : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayDataSource.GetRemoteCallback<Response<Image>>
+        callback: PixabayDataSource.GetRemoteCallback<Response<PixabayImage>>
     ) {
         pixabayApiService.getApiService
             .searchImage(
@@ -72,8 +72,8 @@ object PixabayRemoteDataSource : PixabayDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : PixabayApiCallback<Response<Image>>() {
-                override fun onSuccess(model: Response<Image>) {
+            .subscribe(object : PixabayApiCallback<Response<PixabayImage>>() {
+                override fun onSuccess(model: Response<PixabayImage>) {
                     callback.onSuccess(model)
                 }
 
@@ -99,7 +99,7 @@ object PixabayRemoteDataSource : PixabayDataSource {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayDataSource.GetRemoteCallback<Response<Video>>
+        callback: PixabayDataSource.GetRemoteCallback<Response<PixabayVideo>>
     ) {
         pixabayApiService.getApiService
             .searchVideo(
@@ -121,8 +121,8 @@ object PixabayRemoteDataSource : PixabayDataSource {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { callback.onShowProgress() }
             .doOnTerminate { callback.onHideProgress() }
-            .subscribe(object : PixabayApiCallback<Response<Video>>() {
-                override fun onSuccess(model: Response<Video>) {
+            .subscribe(object : PixabayApiCallback<Response<PixabayVideo>>() {
+                override fun onSuccess(model: Response<PixabayVideo>) {
                     callback.onSuccess(model)
                 }
 

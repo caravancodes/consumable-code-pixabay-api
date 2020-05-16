@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogopixabayapi.data.model
  *
  */
-data class Image(
+data class PixabayImage(
 
     @SerializedName("id")
     var id: Int? = null,

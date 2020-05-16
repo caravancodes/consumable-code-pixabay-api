@@ -2,8 +2,8 @@ package com.frogobox.frogopixabayapi
 
 import android.content.Context
 import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
-import com.frogobox.frogopixabayapi.data.model.Image
-import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.model.PixabayVideo
 import com.frogobox.frogopixabayapi.data.response.Response
 
 /**
@@ -45,7 +45,7 @@ interface ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<Image>>
+        callback: PixabayResultCallback<Response<PixabayImage>>
     )
 
     // Search for Video
@@ -62,7 +62,7 @@ interface ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<Video>>
+        callback: PixabayResultCallback<Response<PixabayVideo>>
     )
 
 }

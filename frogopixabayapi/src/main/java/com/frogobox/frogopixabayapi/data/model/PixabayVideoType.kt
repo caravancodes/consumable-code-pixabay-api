@@ -19,17 +19,17 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogopixabayapi.data.model
  *
  */
-data class VideoType(
+data class PixabayVideoType(
 
     @SerializedName("large")
-    var large: VideoType? = null,
+    var large: PixabayVideoType? = null,
 
     @SerializedName("medium")
-    var medium: VideoType? = null,
+    var medium: PixabayVideoType? = null,
 
     @SerializedName("small")
-    var small: VideoType? = null,
+    var small: PixabayVideoType? = null,
 
     @SerializedName("tiny")
-    var tiny: VideoType? = null
+    var tiny: PixabayVideoType? = null
 )

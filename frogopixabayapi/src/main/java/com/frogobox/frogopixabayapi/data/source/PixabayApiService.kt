@@ -1,8 +1,8 @@
 package com.frogobox.frogopixabayapi.data.source
 
 import android.content.Context
-import com.frogobox.frogopixabayapi.data.model.Image
-import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.model.PixabayVideo
 import com.frogobox.frogopixabayapi.data.response.Response
 import com.frogobox.frogopixabayapi.util.PixabayConstant
 import com.frogobox.frogopixabayapi.util.PixabayUrl
@@ -54,7 +54,7 @@ interface PixabayApiService {
         @Query(PixabayConstant.QUERY_ORDER) order: String?,
         @Query(PixabayConstant.QUERY_PAGE) page: Int?,
         @Query(PixabayConstant.QUERY_PER_PAGE) perPage: Int?
-    ): Observable<Response<Image>>
+    ): Observable<Response<PixabayImage>>
 
     // Search for Video
     @GET(PixabayUrl.PATH_VIDEO)
@@ -72,7 +72,7 @@ interface PixabayApiService {
         @Query(PixabayConstant.QUERY_ORDER) order: String?,
         @Query(PixabayConstant.QUERY_PAGE) page: Int?,
         @Query(PixabayConstant.QUERY_PER_PAGE) perPage: Int?
-    ): Observable<Response<Video>>
+    ): Observable<Response<PixabayVideo>>
 
     companion object Factory {
 

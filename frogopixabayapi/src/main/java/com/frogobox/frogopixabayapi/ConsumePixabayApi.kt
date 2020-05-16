@@ -2,8 +2,8 @@ package com.frogobox.frogopixabayapi
 
 import android.content.Context
 import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
-import com.frogobox.frogopixabayapi.data.model.Image
-import com.frogobox.frogopixabayapi.data.model.Video
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.model.PixabayVideo
 import com.frogobox.frogopixabayapi.data.response.Response
 import com.frogobox.frogopixabayapi.data.source.PixabayDataSource
 import com.frogobox.frogopixabayapi.data.source.PixabayRemoteDataSource
@@ -49,7 +49,7 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<Image>>
+        callback: PixabayResultCallback<Response<PixabayImage>>
     ) {
         pixabayRepository.searchImage(
             apiKey,
@@ -67,8 +67,8 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
             order,
             page,
             perPage,
-            object : PixabayDataSource.GetRemoteCallback<Response<Image>> {
-                override fun onSuccess(data: Response<Image>) {
+            object : PixabayDataSource.GetRemoteCallback<Response<PixabayImage>> {
+                override fun onSuccess(data: Response<PixabayImage>) {
                     callback.getResultData(data)
                 }
 
@@ -99,7 +99,7 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
         order: String?,
         page: Int?,
         perPage: Int?,
-        callback: PixabayResultCallback<Response<Video>>
+        callback: PixabayResultCallback<Response<PixabayVideo>>
     ) {
         pixabayRepository.searchVideo(
             apiKey,
@@ -115,8 +115,8 @@ class ConsumePixabayApi(private val apiKey: String) : ConsumePixabayApiView {
             order,
             page,
             perPage,
-            object : PixabayDataSource.GetRemoteCallback<Response<Video>> {
-                override fun onSuccess(data: Response<Video>) {
+            object : PixabayDataSource.GetRemoteCallback<Response<PixabayVideo>> {
+                override fun onSuccess(data: Response<PixabayVideo>) {
                     callback.getResultData(data)
                 }
 
