@@ -1,9 +1,14 @@
 # consumable-code-pixabay-api By AmirIsBack
-- v1.0.1 - Development
+- v1.0.2 - Development
 - Stable Version
 
 # About This Project
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
+
+# Screen Shoot Apps
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_main.png"></span>
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_1.png"></span>
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_2.png"></span>
 
 # Documentation Pixabay Api
 https://pixabay.com/api/docs/
@@ -11,11 +16,11 @@ https://pixabay.com/api/docs/
 # Version Release
 This Is Latest Release
 
-    $version_release = 1.0.1
+    $version_release = 1.0.2
 
 What's New??
 
-    * add handing progress view and fully parameter *
+    * Refactoring code and adding sample code*
 
 # How To Use This Project
 <h3>Step 1. Add the JitPack repository to your build file</h3>
@@ -34,7 +39,7 @@ Add it in your root build.gradle at the end of repositories:
 
 	dependencies {
 	        // library consumable code pixabay api
-            implementation 'com.github.amirisback:consumable-code-pixabay-api:$version_release'
+            implementation 'com.github.amirisback:consumable-code-pixabay-api:1.0.2'
 	}
 	
 <h3>Step 3. Declaration ConsumePixabayApi</h3>
@@ -82,11 +87,6 @@ Add it in your root build.gradle at the end of repositories:
     
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-# Screen Shoot Apps
-<span align="center"><img width="200px" height="360px" src="docs/image/ss_main.png"></span>
-<span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_1.png"></span>
-<span align="center"><img width="200px" height="360px" src="docs/image/ss_chuck_2.png"></span>
 
 # Function Main From This Project
     // Switch For Using Chuck Interceptor
