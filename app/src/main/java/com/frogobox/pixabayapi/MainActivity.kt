@@ -1,6 +1,7 @@
 package com.frogobox.pixabayapi
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -11,17 +12,18 @@ import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
 import com.frogobox.frogopixabayapi.data.model.PixabayImage
 import com.frogobox.frogopixabayapi.data.response.Response
 import com.frogobox.frogopixabayapi.util.PixabayConstant
-import com.frogobox.recycler.boilerplate.viewrclass.FrogoViewAdapterCallback
-import kotlinx.android.synthetic.main.activity_main.*
+import com.frogobox.pixabayapi.databinding.ActivityMainBinding
+import com.frogobox.recycler.core.IFrogoViewAdapter
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
         setupConsumablePixabayAPI("naruto")
-
     }
 
     private fun consumePixabay() : ConsumePixabayApi {
@@ -59,33 +61,33 @@ class MainActivity : AppCompatActivity() {
                 override fun onShowProgress() {
                     // showing your progress view
                     runOnUiThread {
-                        progressView.visibility = View.VISIBLE
-                        progressView.text = "Loading Fetching Pixabay API"
+                        binding.progressView.visibility = View.VISIBLE
+                        binding.progressView.text = "Loading Fetching Pixabay API"
                     }
                 }
 
                 override fun onHideProgress() {
                     // hide your progress view
                     runOnUiThread {
-                        progressView.visibility = View.GONE
+                        binding.progressView.visibility = View.GONE
                     }
                 }
             })
     }
 
     private fun setupFrogoRecyclerView(data: List<PixabayImage>){
-        frogo_rv.injector<PixabayImage>()
+        binding.frogoRv.injector<PixabayImage>()
             .addData(data)
-            .addCustomView(R.layout.frogo_rv_grid_type_12)
+            .addCustomView(R.layout.frogo_rv_grid_type_1)
             .addEmptyView(null)
-            .addCallback(object : FrogoViewAdapterCallback<PixabayImage>{
+            .addCallback(object : IFrogoViewAdapter<PixabayImage>{
                 override fun onItemClicked(data: PixabayImage) {}
 
                 override fun onItemLongClicked(data: PixabayImage) {}
 
                 override fun setupInitComponent(view: View, data: PixabayImage) {
-                    val ivPoster = view.findViewById<ImageView>(R.id.frogo_rv_type_12_iv_poster)
-                    val tvTitle = view.findViewById<TextView>(R.id.frogo_rv_type_12_tv_title)
+                    val ivPoster = view.findViewById<ImageView>(R.id.frogo_rv_grid_type_1_iv_poster)
+                    val tvTitle = view.findViewById<TextView>(R.id.frogo_rv_grid_type_1_tv_title)
                     Glide.with(view.context).load(data.previewURL).into(ivPoster)
                     val totalLikes = data.likes.toString()
                     tvTitle.text = "$totalLikes likes"
